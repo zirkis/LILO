@@ -1,3 +1,8 @@
+##### IMAGES STUFF #####
+images/
+!images/README/
+
+##### PYTHON STUFF #####
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
