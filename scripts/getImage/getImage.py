@@ -6,8 +6,8 @@ from icrawler.examples import BaiduImageCrawler
 
 print("Initialisation du script\n")
 
-maRecherche = "Basil leaf"
-nombreImage = 20
+maRecherche = "barbara palvin"
+nombreImage = 150
 
 
 print("Google\n")

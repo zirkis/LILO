@@ -4,9 +4,9 @@ images/*
 
 ##### PYTHON STUFF #####
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+**/__pycache__/
+**/*.py[cod]
+**/*$py.class
 
 # C extensions
 *.so
@@ -28,6 +28,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+**/.DS_STORE
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
