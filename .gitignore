@@ -2,6 +2,9 @@
 images/*
 !images/README/
 
+##### Tests STUFF #####
+tests/*
+
 ##### PYTHON STUFF #####
 # Byte-compiled / optimized / DLL files
 **/__pycache__/
