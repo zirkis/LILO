@@ -4,3 +4,6 @@
 
 ###### Requirements to get Image ######
 requests
+six
+bs4
+Pillow

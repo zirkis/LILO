@@ -25,15 +25,32 @@ def getImages(pathToSave, mySearch, numberOfPictures):
 if __name__ == '__main__':
 	print("Initialisation du script\n")
 
-	numberOfPictures = 30
-	pathToSave = "../../images/plants/"
-	speciesSearch = ["Basil leaf",
+	aromaticsSearch = ["Basil leaf",
 									 "Parsley leaf",
 									 "Mint leaf",
 									 "Thyme leaf",
 									 "Thai basil leaf",
 									 "Purple basil leaf"]
-	for specie in speciesSearch:
-		getImages(pathToSave, specie, numberOfPictures)						 
+
+	flowersSearch = ["Sunflower leaf",
+									"Purslane leaf",
+									"Petunia leaf"]
+
+	fruitsAndVegetables = ["salad",
+												"cherry",
+												"tomato",
+												"pepper mini"]
+
+	search = {'aromatics': aromaticsSearch,
+						'flowers': flowersSearch,
+						'fruitsAndVegetable': fruitsAndVegetables}
+
+	numberOfPictures = 30
+	pathToSave = "../../images/plants/"
+
+
+	for categorie, searches in search.items():
+		for specie in searches:
+			getImages(pathToSave + categorie + '/', specie, numberOfPictures)						 
 
 	print("Fin du script\n")
