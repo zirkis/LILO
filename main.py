@@ -20,8 +20,7 @@ cv2.imshow('Mask de vert', mask)
 masked_data = cv2.bitwise_and(img, img, mask=mask)
 
 cv2.imshow("masked", masked_data)
-
-
+cv2.imwrite( "images/tests/mask.jpg", masked_data )
 
 
 #ret,thresh = cv2.threshold(img, 230, 255, 0)
