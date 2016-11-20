@@ -1,0 +1,12 @@
+---
+- name: Config deep learning server
+  hosts: all
+  remote_user: root
+  vars:
+    user: vagrant
+    path_app: /home/vagrant/app
+    path_virtualenv: /home/vagrant/.virtualenv/tensorflow
+
+  roles:
+    - role: utility
+    - role: tensorflow

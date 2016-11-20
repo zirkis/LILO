@@ -49,8 +49,8 @@ class Crawler(object):
 
         self.path_to_save = path_to_save;
         self.img_dir = img_dir
-        if not os.path.isdir(self.path_to_save + self.img_dir):
-            os.makedirs(self.path_to_save + self.img_dir)
+        if not os.path.isdir(self.path_to_save + '/' + self.img_dir):
+            os.makedirs(self.path_to_save + '/' + self.img_dir)
         # init queues
         self.url_queue = queue.Queue()
         self.task_queue = queue.Queue()
@@ -66,7 +66,7 @@ class Crawler(object):
         self.feeder = feeder_cls(self.url_queue, self.signal, self.session)
         self.parser = parser_cls(self.url_queue, self.task_queue,
                                  self.signal, self.session)
-        self.downloader = downloader_cls(self.path_to_save + self.img_dir,
+        self.downloader = downloader_cls(self.path_to_save + '/' + self.img_dir,
                                          self.task_queue,
                                          self.signal, self.session)
 

@@ -1,0 +1,13 @@
+--- 
+- name: Apt update
+  apt:
+    update_cache: yes
+
+- name: Install Pip
+  apt: pkg=python-pip
+
+- name: Install git
+  apt: pkg=git
+
+- name: Install Emacs
+  apt: pkg=emacs

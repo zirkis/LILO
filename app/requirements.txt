@@ -1,0 +1,14 @@
+#
+####### Requirements.txt #######
+#
+
+###### Requirements to install tensorflow ######
+https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.11.0-cp27-none-linux_x86_64.whl
+
+
+###### Requirements to manipulate Images ######
+requests
+six
+bs4
+lxml
+pillow==2.9.0

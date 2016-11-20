@@ -1,0 +1,32 @@
+---
+
+- name: Install requirements
+  apt: pkg={{ item }}
+  with_items:
+    - python-dev
+    - python-virtualenv
+    - libxml2
+    - libxslt1.1
+    - libxslt1-dev
+    - python-libxml2
+    - python-libxslt1
+    - python-dev
+    - python-setuptools
+    - zlib1g-dev
+    - libjpeg-dev
+
+- name: Create virtualenv
+  pip:
+    requirements={{ path_app }}/requirements.txt
+    virtualenv={{ path_virtualenv }}
+  remote_user: "{{ user }}"
+
+- name: Add Tensorflow env alias for user
+  lineinfile:
+    dest=/home/{{ user }}/.bashrc
+    line="alias TENSORFLOW='source /home/{{ user }}/.virtualenv/tensorflow/bin/activate'"
+    owner={{ user }}
+    regexp='^alias source /home/{{ user }}/.virtualenv/tensorflow/bin/activate$'
+    state=present
+    insertafter=EOF
+    create=True
