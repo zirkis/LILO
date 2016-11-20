@@ -1,6 +1,13 @@
 ##### Tests STUFF #####
 /tests/*
+!/tests/.gitkeep
 
 ##### App STUFF #####
 /app/plants
 /app/images
+
+##### Vagrant STUFF #####
+/vagrant/.vagrant
+
+##### Ansible STUFF #####
+/ansible/playbook.retry
