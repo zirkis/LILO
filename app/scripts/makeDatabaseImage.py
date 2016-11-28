@@ -4,10 +4,11 @@ from pictures_manager import PicturesManager
 
 if __name__ == '__main__':
 	print("Initialisation du script\n")
+	
 
+	pathToSave = "../makeDB"
+	pictureManager = PicturesManager(pathToSave)
 	"""
-	pathToSave = "../plants"
-
 	pictureManager = PicturesManager(pathToSave)
 
 	aromaticsSearch = ["Basil leaf",
@@ -31,9 +32,23 @@ if __name__ == '__main__':
 	numberOfPictures = 1000
 
 	for search in searches:
-			pictureManager.downloadPictures(search, numberOfPictures)						 
-				
-	pictureManager.convertPicturesToFormat()
+		pictureManager.downloadPictures(search, numberOfPictures)						 
 	"""
-	
+	numberOfPictures = 1000
+	search = "lettuce"
+	pictureManager.downloadPictures(search, numberOfPictures)		
+	pictureManager.convertPicturesToFormat()
+
+
 	print("Fin du script\n")
+
+
+"""
+	python retrain.py \
+--bottleneck_dir=../train_data/bottlenecks \
+--how_many_training_steps 500 \
+--model_dir=../train_data/inception \
+--output_graph=../train_data/retrained_graph.pb \
+--output_labels=../train_data/retrained_labels.txt \
+--image_dir ../plants
+"""

@@ -3,8 +3,9 @@
 !/tests/.gitkeep
 
 ##### App STUFF #####
-/app/plants
-/app/images
+/app/*
+!/app/requirements.txt
+!/app/scripts
 
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
