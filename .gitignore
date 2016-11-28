@@ -6,6 +6,7 @@
 /app/*
 !/app/requirements.txt
 !/app/scripts
+!/app/data/.gitkeep
 
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
