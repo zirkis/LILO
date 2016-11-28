@@ -1,0 +1,58 @@
+---
+
+- name: Install requirements
+  apt: pkg={{ item }}
+  with_items:
+    - build-essential
+    - python-dev
+    - python-virtualenv
+    - libxml2
+    - libxslt1.1
+    - libxslt1-dev
+    - python-libxml2
+    - python-libxslt1
+    - python-dev
+    - python-setuptools
+    - zlib1g-dev
+    - libjpeg-dev
+    - libgtk2.0-dev
+    - pkg-config
+    - libavcodec-dev
+    - libavformat-dev
+    - libswscale-dev
+
+- name: Create virtualenv
+  pip:
+    requirements={{ path_app }}/requirements.txt
+    virtualenv={{ path_virtualenv }}
+  remote_user: "{{ user }}"
+
+- name: Add Tensorflow env alias for user
+  lineinfile:
+    dest=/home/{{ user }}/.bashrc
+    line="alias WORKSPACE='source {{ path_virtualenv }}/bin/activate'"
+    owner={{ user }}
+    regexp='^alias source {{ path_virtualenv }}/bin/activate$'
+    state=present
+    insertafter=EOF
+    create=True
+
+- name: Download Opencv
+  unarchive:
+    src=https://github.com/DidelotK/opencv/archive/3.1.0.zip
+    dest=/home/{{ user }}
+    owner={{ user }}
+    group={{ user }}
+    remote_src=yes
+    copy=no
+
+- name: Create build dir
+  file: state=directory path=/home/{{ user }}/opencv-3.1.0/build
+
+- name: Install
+  command: "{{ item }} chdir=/home/{{ user }}/opencv-3.1.0/build"
+  become: yes
+  with_items:
+    - cmake {{ cmake_config }}
+    - make -j4
+    - make install

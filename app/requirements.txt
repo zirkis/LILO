@@ -12,3 +12,4 @@ six
 bs4
 lxml
 pillow==2.9.0
+numpy

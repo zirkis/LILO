@@ -11,11 +11,16 @@ LILO is a connected greenhouse allowing you to grow your own seasonings at home.
 
 - [Ansible](http://docs.ansible.com/ansible)
 
+See [Help install](https://github.com/zirkis/LILO/blob/kevin/docs/installation.rst)
+
 ## Install
 	
 ```bash
 $ vagrant up --provision
 ```
+
+
+Can take up to an hour and a half (depends on your connection and your computer)
 
 ## Connect
 
@@ -26,7 +31,7 @@ $ vagrant ssh
 ## Create database
 
 ```bash
-$ TENSORFLOW #(to activate the virtualenv)
+$ WORKSPACE #(to activate the virtualenv)
 
 $ cd app/scripts
 

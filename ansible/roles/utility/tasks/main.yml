@@ -3,6 +3,12 @@
   apt:
     update_cache: yes
 
+- name: Install CMake
+  apt: pkg=cmake
+
+- name: Install Unzip
+  apt: pkg=unzip
+
 - name: Install Pip
   apt: pkg=python-pip
 

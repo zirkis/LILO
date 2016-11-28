@@ -5,8 +5,15 @@
   vars:
     user: vagrant
     path_app: /home/vagrant/app
-    path_virtualenv: /home/vagrant/.virtualenv/tensorflow
-
+    path_virtualenv: /home/vagrant/.virtualenv/workspace
+    cmake_config:
+      > 
+      -D CMAKE_BUILD_TYPE=RELEASE
+      -D CMAKE_INSTALL_PREFIX=/usr/local
+      -D BUILD_EXAMPLES=ON
+      -D PYTHON_EXECUTABLE={{ path_virtualenv }}/bin/python
+      -D PYTHON2_PACKAGES_PATH={{ path_virtualenv }}/lib/python2.7/site-packages
+      -D INSTALL_PYTHON_EXAMPLES=ON ..
   roles:
     - role: utility
-    - role: tensorflow
+    - role: app
