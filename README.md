@@ -19,7 +19,6 @@ See [Help install](https://github.com/zirkis/LILO/blob/kevin/docs/installation.r
 $ vagrant up --provision
 ```
 
-
 Can take up to an hour and a half (depends on your connection and your computer)
 
 ## Connect
