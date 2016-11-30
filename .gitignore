@@ -9,6 +9,9 @@
 !/app/data/
 /app/data/*
 !/app/data/.gitkeep
+/app/scripts/tests/*
+!/app/scripts/tests/.gitkeep
+
 
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
