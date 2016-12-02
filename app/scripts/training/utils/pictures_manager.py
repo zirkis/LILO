@@ -20,13 +20,19 @@ class PicturesManager:
 			min_size=(200,200), max_size=None)
 
 	def convertPicturesToFormat(self, folderPath=None, picturesFormat='jpg', deletePictureIfError= True):
+		print("Convert pictures to {}".format(picturesFormat))
 		if self._hasCorrectFormat(picturesFormat) is False:
 			return False
 
 		if folderPath is None:
 			folderPath = self.pathPictures
 
+		isRootDir = True
 		for (path, dirs, files) in os.walk(folderPath):
+			if isRootDir:
+				isRootDir = False
+				continue
+			print("Move to : {}".format(path))
 			for file in files:
 				success = self.convertPictureToFormat(path + '/' + file, picturesFormat)
 				if success is not True and deletePictureIfError:
@@ -40,12 +46,12 @@ class PicturesManager:
 		if infoPicture is not None:
 			try:
 				im = Image.open(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format']).convert('RGB')
-				im.save(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + format)
-				if infoPicture['format'] !== format:
+				if infoPicture['format'] != format:
+					im.save(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + format)
 					remove(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
 				return True
 			except IOError:
-				print('Error with: ' + infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
+				print('Corrupt file: ' + infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
 				pass
 		return False
 

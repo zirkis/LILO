@@ -11,7 +11,7 @@ WORKSPACE
 ## Launch `makeDatabaseImage.py` with python
 
 ```bash
-cd ~/app/scripts
+cd ~/app/scripts/training
 
 python convertIncorrectFiles.py
 ```

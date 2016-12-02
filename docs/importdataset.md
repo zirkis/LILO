@@ -31,15 +31,15 @@ The expected result:
 
 ## Note
 
+The name of the images doesn't matter
+
 All the images has to be:
 - Readable (not corrupt)
 - Format jpg or (jpeg, JPG, JPEG)
 
-If you're not sur that all your images are not corrupt see:
+If you're not sure that all your images satisfy the requirements above:
 
 - [Convert incorrect files](https://github.com/zirkis/LILO/blob/kevin/docs/convertincorrectfiles.md)
-
-The name of the images doesn't matter
 
 The name of the dataset folder will be the label of the dataset images
 

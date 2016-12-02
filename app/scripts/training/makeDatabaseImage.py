@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 
-from pictures_manager import PicturesManager
+from utils.pictures_manager import PicturesManager
 
 if __name__ == '__main__':
 
-	pathToSave = "../data"
+	pathToSave = "../../data"
 
 	pictureManager = PicturesManager(pathToSave)
 
-	searchs = ["plane", "car", "house"]
-	numberOfPictures = 1000
+	searchies = ["plane", "car", "house"]
+	numberOfPictures = 10
 
-	pictureManager.downloadPictures(searchs, numberOfPictures)		
+	for search in searchies:
+		pictureManager.downloadPictures(search, numberOfPictures)
+
 	pictureManager.convertPicturesToFormat()
 
 
-
-
-
 	"""
-
 	aromaticsSearch = ["Basil leaf",
 									 "Parsley leaf",
 									 "Mint leaf",

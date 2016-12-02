@@ -1,13 +1,24 @@
 # Retrain
+Open a terminal then:
+
+## Activate the virtualenv
 
 ```bash
+WORKSPACE
+```
+
+## Go to `app/scripts/training` and run `retrain.py`
+
+```bash
+cd ~/app/scripts/training
+
 $ python retrain.py \
---bottleneck_dir=../train_data/bottlenecks \
+--bottleneck_dir ../../train_data/bottlenecks \
 --how_many_training_steps 1000 \
---model_dir=../train_data/inception \
---output_graph=../train_data/retrained_graph.pb \
---output_labels=../train_data/retrained_labels.txt \
---image_dir ../data \
+--model_dir ../../train_data/inception \
+--output_graph ../../train_data/retrained_graph.pb \
+--output_labels ../../train_data/retrained_labels.txt \
+--image_dir ../../data \
 --flip_left_right True \
 --random_crop 25 \
 --random_brightness 25

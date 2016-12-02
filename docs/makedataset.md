@@ -11,15 +11,15 @@ WORKSPACE
 ## Go to `app/scripts` and open `makeDatabaseImage.py`
 
 ```bash
-cd ~/app/scripts
+cd ~/app/scripts/training
 
 (vi/emacs/subl) makeDatabaseImage.py
 ```
 
-## Create an array of search
+## Create an array of searchies
 
 ```python
-searchs = ["plane", "car", "house"]
+searchies = ["plane", "car", "house"]
 ```
 
 ## Set the number of pictures to get
@@ -33,14 +33,16 @@ numberOfPictures = 1000
 ```python
 if __name__ == '__main__':
 
-	pathToSave = "../data"
+	pathToSave = "../../data"
 
 	pictureManager = PicturesManager(pathToSave)
 
-	searchs = ["plane", "car", "house"]
+	searchies = ["plane", "car", "house"]
 	numberOfPictures = 1000
 
-	pictureManager.downloadPictures(searchs, numberOfPictures)		
+	for search in searchies:
+		pictureManager.downloadPictures(search, numberOfPictures)
+
 	pictureManager.convertPicturesToFormat()
 ```
 
@@ -54,9 +56,11 @@ Your dataset is ready
 
 ## Note
 
-You can go to the data's folder to check if all the images are really what you 
+You can go to the data's folder (`~/app/data`) to check if all the images are really what you 
 expect to be. If not you should delete them because it will decrease the 
 efficiency of the learning.
+
+More images you got more the learning will be efficient.
 
 [![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)
 
