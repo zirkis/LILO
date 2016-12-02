@@ -1,7 +1,7 @@
 # LILO
 LILO is a connected greenhouse allowing you to grow your own seasonings at home.
 
-![alt tag](https://github.com/zirkis/LILO/blob/kevin/docs/images/lilo.png)
+[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/lilo.png)](https://pretapousser.fr)
 
 ## Required
 
