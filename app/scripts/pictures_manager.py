@@ -38,12 +38,11 @@ class PicturesManager:
 		infoPicture = self.getInfosPicture(picturePath)
 
 		if infoPicture is not None:
-			if infoPicture['format'] == format:
-				return True
 			try:
 				im = Image.open(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format']).convert('RGB')
 				im.save(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + format)
-				remove(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
+				if infoPicture['format'] !== format:
+					remove(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
 				return True
 			except IOError:
 				print('Error with: ' + infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
