@@ -58,5 +58,5 @@ You can go to the data's folder to check if all the images are really what you
 expect to be. If not you should delete them because it will decrease the 
 efficiency of the learning.
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left-arrow.png)](https://github.com/zirkis/LILO/blob/kevin/README.MD)
+[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)
 

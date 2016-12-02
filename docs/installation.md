@@ -16,3 +16,5 @@ Install requirement
 - Install ansible
 
 		sudo apt-get install ansible
+
+[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)

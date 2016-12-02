@@ -42,3 +42,5 @@ If you're not sur that all your images are not corrupt see:
 The name of the images doesn't matter
 
 The name of the dataset folder will be the label of the dataset images
+
+[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)
