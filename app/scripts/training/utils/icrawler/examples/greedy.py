@@ -84,9 +84,9 @@ class GreedyParser(Parser):
 
 class GreedyImageCrawler(Crawler):
 
-    def __init__(self, path_to_save='', img_dir='images', log_level=logging.INFO):
+    def __init__(self, path_to_save='', search='', log_level=logging.INFO):
         super(GreedyImageCrawler, self).__init__(
-            path_to_save=path_to_save, img_dir=img_dir,
+            path_to_save=path_to_save, search=search,
             feeder_cls=GreedyFeeder, parser_cls=GreedyParser,
             log_level=log_level)
 

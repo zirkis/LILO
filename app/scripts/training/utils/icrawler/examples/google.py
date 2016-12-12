@@ -44,9 +44,9 @@ class GoogleParser(Parser):
 
 class GoogleImageCrawler(Crawler):
 
-    def __init__(self, path_to_save='', img_dir='images', log_level=logging.INFO):
+    def __init__(self, path_to_save='', search='', log_level=logging.INFO):
         super(GoogleImageCrawler, self).__init__(
-            path_to_save=path_to_save, img_dir=img_dir,
+            path_to_save=path_to_save, search=search,
             feeder_cls=GoogleFeeder, parser_cls=GoogleParser,
             log_level=log_level)
 

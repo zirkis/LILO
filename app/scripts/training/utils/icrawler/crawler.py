@@ -19,7 +19,7 @@ class Crawler(object):
     """Base class for Crawlers.
 
     Attributes:
-        img_dir: The folder where images will be saved.
+        search: The search.
         path_to_save: The path where the img_dir will be saved
         url_queue: A queue storing page urls, connecting Feeder and Parser.
         task_queue: A queue storing image downloading tasks, connecting
@@ -34,13 +34,12 @@ class Crawler(object):
         logger: A logging.Logger object used for logging.
     """
 
-    def __init__(self, path_to_save='', img_dir='images', feeder_cls=Feeder,
+    def __init__(self, path_to_save='.', search='', feeder_cls=Feeder,
         parser_cls=Parser, downloader_cls=Downloader, log_level=logging.INFO):
         """Init Crawler with class names and other arguments.
 
         Args:
-            img_dir: The root where images will be saved.
-            path_to_save: The path where the img_dir will be saved
+            path_to_save: The path where the images will be saved
             feeder_cls: Class of the feeder used in the crawler.
             parser_cls: Class of the parser used in the crawler.
             downloader_cls: Class of the downloader used in the crawler.
@@ -48,9 +47,9 @@ class Crawler(object):
         """
 
         self.path_to_save = path_to_save;
-        self.img_dir = img_dir
-        if not os.path.isdir(self.path_to_save + '/' + self.img_dir):
-            os.makedirs(self.path_to_save + '/' + self.img_dir)
+        self.search = search
+        if not os.path.isdir(self.path_to_save):
+            os.makedirs(self.path_to_save)
         # init queues
         self.url_queue = queue.Queue()
         self.task_queue = queue.Queue()
@@ -66,9 +65,11 @@ class Crawler(object):
         self.feeder = feeder_cls(self.url_queue, self.signal, self.session)
         self.parser = parser_cls(self.url_queue, self.task_queue,
                                  self.signal, self.session)
-        self.downloader = downloader_cls(self.path_to_save + '/' + self.img_dir,
-                                         self.task_queue,
-                                         self.signal, self.session)
+        self.downloader = downloader_cls(img_dir=self.path_to_save,
+                                         task_queue=self.task_queue,
+                                         signal=self.signal,
+                                         session=self.session,
+                                         basename=search)
 
     def init_signal(self):
         """Init signal.

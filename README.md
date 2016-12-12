@@ -16,7 +16,8 @@ See [Help install](https://github.com/zirkis/LILO/blob/kevin/docs/installation.m
 ## Install
 	
 ```bash
-$ vagrant up --provision
+cd <path_to_project>/vagrant
+vagrant up --provision
 ```
 
 Can take up to an hour and a half (depends on your connection and your computer)
@@ -24,7 +25,7 @@ Can take up to an hour and a half (depends on your connection and your computer)
 ## Connect
 
 ```bash
-$ vagrant ssh
+vagrant ssh
 ```
 
 ## Create or import dataset 
@@ -40,3 +41,8 @@ $ vagrant ssh
 ## Test
 
 [Test](https://github.com/zirkis/LILO/blob/kevin/docs/test.md)
+
+//TODO
+sudo apt-get install tesseract-ocr
+pytesseract
+yapf

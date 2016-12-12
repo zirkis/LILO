@@ -43,9 +43,9 @@ class BaiduParser(Parser):
 
 class BaiduImageCrawler(Crawler):
 
-    def __init__(self, path_to_save='', img_dir='images', log_level=logging.INFO):
+    def __init__(self, path_to_save='', search='', log_level=logging.INFO):
         super(BaiduImageCrawler, self).__init__(
-            path_to_save='', img_dir='images', feeder_cls=SimpleSEFeeder,
+            path_to_save=path_to_save, search=search, feeder_cls=SimpleSEFeeder,
             parser_cls=BaiduParser, log_level=log_level)
 
     def crawl(self, keyword, offset=0, max_num=1000, feeder_thr_num=1,

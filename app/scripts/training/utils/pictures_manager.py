@@ -13,7 +13,7 @@ class PicturesManager:
 	def downloadPictures(self, search, numberOfPictures, pathToSave=None):
 		if pathToSave is None:
 			pathToSave = self.pathPictures
-		googleCrawler = GoogleImageCrawler(path_to_save=pathToSave, img_dir=search)
+		googleCrawler = GoogleImageCrawler(path_to_save=pathToSave, search=search)
 		googleCrawler.crawl(keyword=search, offset=0, max_num=numberOfPictures,
 			date_min=None, date_max=None, feeder_thr_num=1,
 			parser_thr_num=1, downloader_thr_num=4,

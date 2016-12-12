@@ -26,7 +26,7 @@ class BingParser(Parser):
 
 class BingImageCrawler(Crawler):
 
-    def __init__(self, path_to_save='', img_dir='images', log_level=logging.INFO):
+    def __init__(self, path_to_save='', search='', log_level=logging.INFO):
         super(BingImageCrawler, self).__init__(
             path_to_save=path_to_save, img_dir=img_dir, feeder_cls=SimpleSEFeeder,
             parser_cls=BingParser, log_level=log_level)

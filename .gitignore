@@ -12,9 +12,13 @@
 /app/scripts/tests/*
 !/app/scripts/tests/.gitkeep
 
-
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
 
 ##### Ansible STUFF #####
 /ansible/playbook.retry
+
+##### Python STUFF ######
+__pycache__/
+*.py[cod]
+*$py.class

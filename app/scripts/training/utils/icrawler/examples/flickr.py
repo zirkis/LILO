@@ -80,7 +80,7 @@ class FlickrImageCrawler(Crawler):
     def __init__(self, apikey, path_to_save='', img_dir='images', log_level=logging.INFO):
         self.apikey = apikey
         super(FlickrImageCrawler, self).__init__(
-            path_to_save='', img_dir='images', feeder_cls=FlickrFeeder,
+            path_to_save=path_to_save, img_dir='images', feeder_cls=FlickrFeeder,
             parser_cls=FlickrParser, log_level=log_level)
 
     def crawl(self, max_num=1000, feeder_thr_num=1,

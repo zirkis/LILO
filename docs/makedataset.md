@@ -16,10 +16,14 @@ cd ~/app/scripts/training
 (vi/emacs/subl) makeDatabaseImage.py
 ```
 
-## Create an array of searchies
+## Create an dict of searchies
+
+- key: folder to save
+
+- value: search
 
 ```python
-searchies = ["plane", "car", "house"]
+searchies = {"plane": "plane", "car": "car", "house": "house"}
 ```
 
 ## Set the number of pictures to get
@@ -37,11 +41,11 @@ if __name__ == '__main__':
 
 	pictureManager = PicturesManager(pathToSave)
 
-	searchies = ["plane", "car", "house"]
-	numberOfPictures = 1000
+	searchies = {"plane": "plane", "car": "car", "house": "house"}
+	numberOfPictures = 10
 
-	for search in searchies:
-		pictureManager.downloadPictures(search, numberOfPictures)
+	for folderToSave, search in searchies.iteritems():
+		pictureManager.downloadPictures(search, numberOfPictures, "../../data/{}".format(folderToSave))
 
 	pictureManager.convertPicturesToFormat()
 ```

@@ -8,36 +8,35 @@ if __name__ == '__main__':
 
 	pictureManager = PicturesManager(pathToSave)
 
-	searchies = ["plane", "car", "house"]
+	searchies = {"plane": "plane", "car": "car", "house": "house"}
 	numberOfPictures = 10
 
-	for search in searchies:
-		pictureManager.downloadPictures(search, numberOfPictures)
+	for folderToSave, search in searchies.iteritems():
+		pictureManager.downloadPictures(search, numberOfPictures, "../../data/{}".format(folderToSave))
 
 	pictureManager.convertPicturesToFormat()
 
-
 	"""
-	aromaticsSearch = ["Basil leaf",
-									 "Parsley leaf",
-									 "Mint leaf",
-									 "Thyme leaf",
-									 "Thai basil leaf",
-									 "Purple basil leaf"]
+	aromaticsSearchies = {"basil": "Basil leaf",
+									 "parsley": "Parsley leaf",
+									 "mint": "Mint leaf",
+									 "thyme": "Thyme leaf",
+									 "thai basil": "Thai basil leaf",
+									 "purple basil": "Purple basil leaf"}
 
-	flowersSearch = ["Sunflower",
-									"Purslane",
-									"Petunia"]
+	flowersSearchies = {"sunflower": "Sunflower",
+									"purslane": "Purslane",
+									"petunia": "Petunia"}
 
-	fruitsAndVegetables = ["lettuce",
-												"cherry",
-												"tomato",
-												"pepper mini"]
+	fruitsAndVegetablesSearchies = {"lettuce": "lettuce",
+												"cherry": "cherry",
+												"tomato": "tomato",
+												"pepper mini": "pepper mini"}
 
-	searches = aromaticsSearch + flowersSearch + fruitsAndVegetables
+	searchies = aromaticsSearchies + flowersSearchies + fruitsAndVegetablesSearchies
 
 	numberOfPictures = 1000
 
-	for search in searches:
-		pictureManager.downloadPictures(search, numberOfPictures)						 
+	for folderToSave, search in searchies.iteritems():
+		pictureManager.downloadPictures(search, numberOfPictures, "../../data/{}".format(folderToSave))					 
 	"""
