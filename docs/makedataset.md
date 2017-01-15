@@ -16,7 +16,7 @@ cd ~/app/scripts/training
 (vi/emacs/subl) makeDatabaseImage.py
 ```
 
-## Create an dict of searchies
+## Create a dict of searchies
 
 - key: folder to save
 
