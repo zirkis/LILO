@@ -8,12 +8,12 @@ Open a terminal then:
 WORKSPACE
 ```
 
-## Go to `app/scripts` and open `make_database_image.py`
+## Go to `app/scripts` and open `makeDatabaseImage.py`
 
 ```bash
 cd ~/app/scripts/training
 
-(vi/emacs/subl) make_database_image.py
+(vi/emacs/subl) makeDatabaseImage.py
 ```
 
 ## Create a dict of searchies
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 ## Launch `makeDatabaseImage.py` with python
 
 ```bash
-python make_database_image.py
+python makeDatabaseImage.py
 ```
 
 Your dataset is ready
@@ -66,5 +66,5 @@ efficiency of the learning.
 
 More images you got more the learning will be efficient.
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)
+[![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/left.png)](https://github.com/zirkis/LILO/blob/master/README.md)
 
