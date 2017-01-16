@@ -8,12 +8,12 @@ Open a terminal then:
 WORKSPACE
 ```
 
-## Go to `app/scripts` and open `makeDatabaseImage.py`
+## Go to `app/scripts` and open `make_database_image.py`
 
 ```bash
 cd ~/app/scripts/training
 
-(vi/emacs/subl) makeDatabaseImage.py
+(vi/emacs/subl) make_database_image.py
 ```
 
 ## Create a dict of searchies
@@ -53,7 +53,7 @@ if __name__ == '__main__':
 ## Launch `makeDatabaseImage.py` with python
 
 ```bash
-python makeDatabaseImage.py
+python make_database_image.py
 ```
 
 Your dataset is ready

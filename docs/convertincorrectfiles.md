@@ -8,12 +8,12 @@ Open a terminal then:
 WORKSPACE
 ```
 
-## Launch `makeDatabaseImage.py` with python
+## Launch `make_database_image.py` with python
 
 ```bash
 cd ~/app/scripts/training
 
-python convertIncorrectFiles.py
+python convert_incorrect_files.py
 ```
 
 Your dataset is ready

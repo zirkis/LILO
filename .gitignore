@@ -1,7 +1,3 @@
-##### Tests STUFF #####
-/tests/*
-!/tests/.gitkeep
-
 ##### App STUFF #####
 /app/*
 !/app/requirements.txt
