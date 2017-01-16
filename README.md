@@ -9,7 +9,7 @@ Coded in Python, with OpenCV & TensorFlow, this project follows machine learning
 Software by Benjamin HAOUI & Kevin DIDELOT.
 Hardware provided by the french startup Prêt à Pousser (https://pretapousser.fr)
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/lilo.png)](https://pretapousser.fr)
+[![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/lilo.png)](https://pretapousser.fr)
 
 ## Required
 
@@ -19,7 +19,7 @@ Hardware provided by the french startup Prêt à Pousser (https://pretapousser.f
 
 - [Ansible](http://docs.ansible.com/ansible)
 
-See [Help install](https://github.com/zirkis/LILO/blob/kevin/docs/installation.md)
+See [Help install](https://github.com/zirkis/LILO/blob/master/docs/installation.md)
 
 ## Install
 	
