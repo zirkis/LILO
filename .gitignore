@@ -1,12 +1,6 @@
-##### App STUFF #####
-/app/*
-!/app/requirements.txt
-!/app/scripts
-!/app/data/
-/app/data/*
-!/app/data/.gitkeep
-/app/scripts/tests/*
-!/app/scripts/tests/.gitkeep
+##### APP DATA #####
+/app/data/
+/app/data_on_prepare
 
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
