@@ -38,17 +38,17 @@ vagrant ssh
 
 ## Create or import dataset 
 
-[Create](https://github.com/zirkis/LILO/blob/kevin/docs/makedataset.md)
+[Create](https://github.com/zirkis/LILO/blob/master/docs/makedataset.md)
 
-[Import](https://github.com/zirkis/LILO/blob/kevin/docs/importdataset.md)
+[Import](https://github.com/zirkis/LILO/blob/master/docs/importdataset.md)
 
 ## Retrain 
 
-[Retrain](https://github.com/zirkis/LILO/blob/kevin/docs/retrain.md)
+[Retrain](https://github.com/zirkis/LILO/blob/master/docs/retrain.md)
 
 ## Test
 
-[Test](https://github.com/zirkis/LILO/blob/kevin/docs/test.md)
+[Test](https://github.com/zirkis/LILO/blob/master/docs/test.md)
 
 //TODO
 sudo apt-get install tesseract-ocr
