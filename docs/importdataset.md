@@ -39,8 +39,8 @@ All the images has to be:
 
 If you're not sure that all your images satisfy the requirements above:
 
-- [Convert incorrect files](https://github.com/zirkis/LILO/blob/kevin/docs/convertincorrectfiles.md)
+- [Convert incorrect files](https://github.com/zirkis/LILO/blob/master/docs/convertincorrectfiles.md)
 
 The name of the dataset folder will be the label of the dataset images
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)
+[![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/left.png)](https://github.com/zirkis/LILO/blob/master/README.md)

@@ -157,4 +157,4 @@ image input pixels up or down by.
 
 **Default:** `0`
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/README.md)
+[![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/left.png)](https://github.com/zirkis/LILO/blob/master/README.md)

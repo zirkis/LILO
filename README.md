@@ -9,7 +9,7 @@ Coded in Python, with OpenCV & TensorFlow, this project follows machine learning
 Software by Benjamin HAOUI & Kevin DIDELOT.
 Hardware provided by the french startup Prêt à Pousser (https://pretapousser.fr)
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/lilo.png)](https://pretapousser.fr)
+[![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/lilo.png)](https://pretapousser.fr)
 
 ## Required
 
@@ -19,7 +19,7 @@ Hardware provided by the french startup Prêt à Pousser (https://pretapousser.f
 
 - [Ansible](http://docs.ansible.com/ansible)
 
-See [Help install](https://github.com/zirkis/LILO/blob/kevin/docs/installation.md)
+See [Help install](https://github.com/zirkis/LILO/blob/master/docs/installation.md)
 
 ## Install
 	
@@ -38,17 +38,17 @@ vagrant ssh
 
 ## Create or import dataset 
 
-[Create](https://github.com/zirkis/LILO/blob/kevin/docs/makedataset.md)
+[Create](https://github.com/zirkis/LILO/blob/master/docs/makedataset.md)
 
-[Import](https://github.com/zirkis/LILO/blob/kevin/docs/importdataset.md)
+[Import](https://github.com/zirkis/LILO/blob/master/docs/importdataset.md)
 
 ## Retrain 
 
-[Retrain](https://github.com/zirkis/LILO/blob/kevin/docs/retrain.md)
+[Retrain](https://github.com/zirkis/LILO/blob/master/docs/retrain.md)
 
 ## Test
 
-[Test](https://github.com/zirkis/LILO/blob/kevin/docs/test.md)
+[Test](https://github.com/zirkis/LILO/blob/master/docs/test.md)
 
 //TODO
 sudo apt-get install tesseract-ocr

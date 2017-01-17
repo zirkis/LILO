@@ -2,6 +2,13 @@
 /app/data/
 /app/data_on_prepare
 
+##### APP PACKAGE #####
+/app/machine-learning/pytest_runner-2.9-py2.7.egg
+/app/machine_learning/.cache
+/app/machine_learning/build
+/app/machine_learning/dist
+/app/machine_learning/machine_learning.egg-info
+
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
 

@@ -10,14 +10,21 @@ class PicturesManager:
 	def __init__(self, pathPictures):
 		self.pathPictures = pathPictures
 
-	def downloadPictures(self, search, numberOfPictures, pathToSave=None):
+	def downloadPictures(self, search, number_of_results, path_to_save=None):
 		if pathToSave is None:
 			pathToSave = self.pathPictures
-		googleCrawler = GoogleImageCrawler(path_to_save=pathToSave, search=search)
-		googleCrawler.crawl(keyword=search, offset=0, max_num=numberOfPictures,
-			date_min=None, date_max=None, feeder_thr_num=1,
-			parser_thr_num=1, downloader_thr_num=4,
-			min_size=(200,200), max_size=None)
+		googleCrawler = GoogleImageCrawler(path_to_save, search)
+		googleCrawler.crawl(
+			keyword=search,
+			offset=0,
+			max_num=number_of_results,
+			date_min=None,
+			date_max=None,
+			feeder_thr_num=1,
+			parser_thr_num=1,
+			downloader_thr_num=4,
+			min_size=(200,200),
+			max_size=None)
 
 	def convertPicturesToFormat(self, folderPath=None, picturesFormat='jpg', deletePictureIfError= True):
 		print("Convert pictures to {}".format(picturesFormat))
@@ -46,8 +53,8 @@ class PicturesManager:
 		if infoPicture is not None:
 			try:
 				im = Image.open(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format']).convert('RGB')
+				im.save(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + format)
 				if infoPicture['format'] != format:
-					im.save(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + format)
 					remove(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
 				return True
 			except IOError:
@@ -76,4 +83,3 @@ class PicturesManager:
 					pictureFormat == 'PNG'):
 				return True;
 		return False
-

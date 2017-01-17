@@ -4,7 +4,7 @@ from utils.pictures_manager import PicturesManager
 
 if __name__ == '__main__':
 
-	pathToSave = "../../data"
+	pathToSave = "../../data2"
 
 	pictureManager = PicturesManager(pathToSave)
 
@@ -12,7 +12,7 @@ if __name__ == '__main__':
 	numberOfPictures = 10
 
 	for folderToSave, search in searchies.iteritems():
-		pictureManager.downloadPictures(search, numberOfPictures, "../../data/{}".format(folderToSave))
+		pictureManager.downloadPictures(search, numberOfPictures, "{}/{}".format(pathToSave, folderToSave))
 
 	pictureManager.convertPicturesToFormat()
 

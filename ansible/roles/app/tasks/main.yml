@@ -39,11 +39,10 @@
 
 - name: Download Opencv
   unarchive:
-    src=https://github.com/DidelotK/opencv/archive/3.1.0.zip
+    src=https://github.com/opencv/opencv/archive/3.1.0.zip
     dest=/home/{{ user }}
     owner={{ user }}
     group={{ user }}
-    remote_src=yes
     copy=no
 
 - name: Create build dir

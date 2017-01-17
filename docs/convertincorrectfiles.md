@@ -30,4 +30,4 @@ Accepted format :
 
 If your images are not of in the list above they will be deleted
 
-[![alt text](https://github.com/zirkis/LILO/blob/kevin/docs/images/left.png)](https://github.com/zirkis/LILO/blob/kevin/docs/importdataset.md)
+[![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/left.png)](https://github.com/zirkis/LILO/blob/master/docs/importdataset.md)
