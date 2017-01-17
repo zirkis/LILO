@@ -1,7 +1,6 @@
 ##### APP DATA #####
 /app/data/
-/app/data_on_prepare/
-!/app/deep_learning
+/app/data_on_prepare
 
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
