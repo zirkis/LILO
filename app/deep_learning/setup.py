@@ -10,7 +10,7 @@ setup(
  
   version='1.0.0',
  
-  packages=find_packages(),
+  packages=find_packages(exclude=["docs", "examples", "tests"]),
  
   author="Benjamin & Kevin",
 
@@ -30,9 +30,17 @@ setup(
     "Topic :: Deep learning",
   ],
  
+  install_requires=[
+    'bs4',
+    'six',
+    'lxml',
+    'pillow==2.9.0',
+    'numpy',
+    'tensorflow'
+  ],
+
   setup_requires=['pytest-runner'],
 
   tests_require=['pytest'],
-
   license="MIT",
 )

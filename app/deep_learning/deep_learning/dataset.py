@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
-from dataset.pictures_manager import PicturesManager
+from os import *
+import cv2
+from utils.dataset.pictures_manager import PicturesManager
 
 class Dataset:
 
@@ -15,7 +17,7 @@ class Dataset:
     """
     self.path_dataset = path_dataset
     self.pictures_manager = PicturesManager(path_dataset)
-    self._create_if_not_exist_dataset_folder(path_dataset)
+    self._create_if_not_exist_dataset_folder()
 
   def _create_if_not_exist_dataset_folder(self):
     """
@@ -38,7 +40,7 @@ class Dataset:
       added into the dataset label
       :type number_of_results: int 
     """
-    pictureManager.downloadPictures(
+    self.pictures_manager.download_pictures(
       search,
       number_of_results,
       path_to_save="{}/{}".format(self.path_dataset, label)
@@ -56,7 +58,7 @@ class Dataset:
     """
     pass
 
-  def add_video_to_dataset(self, label, modulo):
+  def add_video_to_dataset(self, label, path_to_video, modulo):
     """
       Add the video into the dataset label given
 
@@ -67,7 +69,25 @@ class Dataset:
       Example: modulo = 2, one image on two will be taken
       :type modulo: int
     """
-    pass
+    folder_to_save='{}/{}'.format(self.path_dataset, label)
+    if not os.path.exists(folder_to_save):
+      os.mkdir(folder_to_save)
+
+    basename = path.basename(path_to_video)
+    name = path.splitext(basename)[0]
+    name = name + '_'
+
+    vidcap = cv2.VideoCapture(path_to_video)
+    count = 0
+    success = True
+    while success:
+      success, image = vidcap.read()
+
+      path_to_save = "{}/{}{}.jpg".format(folder_to_save, name, count)
+      count += 1
+      if success and (count % modulo == 0):
+        print(path_to_save)
+        cv2.imwrite(path_to_save, image)     # save frame as JPEG file
 
   def check_if_dataset_is_valid(self):
     """

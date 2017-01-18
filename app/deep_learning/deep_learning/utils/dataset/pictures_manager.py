@@ -7,14 +7,14 @@ from icrawler.examples import GoogleImageCrawler
 
 class PicturesManager:
 
-	def __init__(self, pathPictures):
-		self.pathPictures = pathPictures
+	def __init__(self, path_pictures):
+		self.path_pictures = path_pictures
 
-	def downloadPictures(self, search, number_of_results, path_to_save=None):
-		if pathToSave is None:
-			pathToSave = self.pathPictures
-		googleCrawler = GoogleImageCrawler(path_to_save, search)
-		googleCrawler.crawl(
+	def download_pictures(self, search, number_of_results, path_to_save=None):
+		if path_to_save is None:
+			path_to_save = self.pathPictures
+		google_crawler = GoogleImageCrawler(path_to_save, search)
+		google_crawler.crawl(
 			keyword=search,
 			offset=0,
 			max_num=number_of_results,
@@ -26,60 +26,64 @@ class PicturesManager:
 			min_size=(200,200),
 			max_size=None)
 
-	def convertPicturesToFormat(self, folderPath=None, picturesFormat='jpg', deletePictureIfError= True):
-		print("Convert pictures to {}".format(picturesFormat))
-		if self._hasCorrectFormat(picturesFormat) is False:
+	def convert_pictures_to_format(self, 
+		folder_path=None,
+		pictures_format='jpg',
+		delete_picture_if_error=True):
+
+		print("Convert pictures to {}".format(pictures_format))
+		if self._has_correct_format(pictures_format) is False:
 			return False
 
-		if folderPath is None:
-			folderPath = self.pathPictures
+		if folder_path is None:
+			folder_path = self.path_pictures
 
-		isRootDir = True
-		for (path, dirs, files) in os.walk(folderPath):
-			if isRootDir:
-				isRootDir = False
+		is_root_dir = True
+		for (path, dirs, files) in os.walk(folder_path):
+			if is_root_dir:
+				is_root_dir = False
 				continue
 			print("Move to : {}".format(path))
 			for file in files:
-				success = self.convertPictureToFormat(path + '/' + file, picturesFormat)
-				if success is not True and deletePictureIfError:
+				success = self.convert_picture_to_format(path + '/' + file, pictures_format)
+				if success is not True and delete_picture_if_error:
 					print('Delete: ' + path + '/' + file)
 					remove(path + '/' + file)
 		return True
 
-	def convertPictureToFormat(self, picturePath, format='jpg'):
-		infoPicture = self.getInfosPicture(picturePath)
+	def convert_picture_to_format(self, picture_path, picture_format='jpg'):
+		info_picture = self.get_infos_picture(picture_path)
 
-		if infoPicture is not None:
+		if info_picture is not None:
 			try:
-				im = Image.open(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format']).convert('RGB')
-				im.save(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + format)
-				if infoPicture['format'] != format:
-					remove(infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
+				im = Image.open(info_picture['dirname'] + '/' + info_picture['name'] + '.' + info_picture['format']).convert('RGB')
+				im.save(info_picture['dirname'] + '/' + info_picture['name'] + '.' + picture_format)
+				if info_picture['format'] != picture_format:
+					remove(info_picture['dirname'] + '/' + info_picture['name'] + '.' + info_picture['format'])
 				return True
 			except IOError:
-				print('Corrupt file: ' + infoPicture['dirname'] + '/' + infoPicture['name'] + '.' + infoPicture['format'])
+				print('Corrupt file: ' + info_picture['dirname'] + '/' + info_picture['name'] + '.' + info_picture['format'])
 				pass
 		return False
 
-	def getInfosPicture(self, picturePath):
-		basename = path.basename(picturePath)
-		pictureFormat = path.splitext(basename)[1][1:]
-		if self._hasCorrectFormat(pictureFormat) is False:
+	def get_infos_picture(self, picture_path):
+		basename = path.basename(picture_path)
+		picture_format = path.splitext(basename)[1][1:]
+		if self._has_correct_format(picture_format) is False:
 			return None
-		dirname =path.dirname(picturePath)
+		dirname =path.dirname(picture_path)
 		name = path.splitext(basename)[0]
 
 		return {'dirname': dirname,
 						'name': name,
-						'format': pictureFormat
+						'format': picture_format
 						}
 
-	def _hasCorrectFormat(self, pictureFormat):
-		pictureFormat = pictureFormat.upper()
-		if (pictureFormat == 'BMP' or 
-					pictureFormat == 'JPEG' or
-					pictureFormat == 'JPG' or
-					pictureFormat == 'PNG'):
+	def _has_correct_format(self, picture_format):
+		picture_format = picture_format.upper()
+		if (picture_format == 'BMP' or 
+					picture_format == 'JPEG' or
+					picture_format == 'JPG' or
+					picture_format == 'PNG'):
 				return True;
 		return False
