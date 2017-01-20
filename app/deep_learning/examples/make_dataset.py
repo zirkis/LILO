@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from deep_learning.dataset import Dataset
+from deep_learning import crawl
 
 if __name__ == '__main__':
 
-	path_to_dataset = 'data_example'
-	dataset = Dataset(path_to_dataset)
+	path_to_save = 'data_example'
 
 	aromatics_searchies = {"basil": "Basil leaf",
 									 "parsley": "Parsley leaf",
@@ -23,9 +22,11 @@ if __name__ == '__main__':
 												"tomato": "tomato",
 												"pepper mini": "pepper mini"}
 
-	searchies = aromatics_searchies + flowers_searchies + fruits_and_vegetables_searchies
+	searchies = dict(aromatics_searchies.items() +
+		flowers_searchies.items() +
+		fruits_and_vegetables_searchies.items()) 
 
-	number_of_results = 50
+	number_of_results = 5
 
 	for label, search in searchies.iteritems():
-		dataset.add_search_to_dataset(label, search, number_of_results)			
+		crawl('google', search, number_of_results, '{}/{}'.format(path_to_save, label))			

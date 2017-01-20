@@ -866,6 +866,8 @@ def main(_):
   with gfile.FastGFile(FLAGS.output_labels, 'w') as f:
     f.write('\n'.join(image_lists.keys()) + '\n')
 
+def retrain():
+  pass
 
 if __name__ == '__main__':
   tf.app.run()

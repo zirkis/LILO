@@ -6,6 +6,7 @@
     user: vagrant
     path_app: /home/vagrant/app
     path_virtualenv: /home/vagrant/.virtualenv/workspace
+    path_env_bin_python: "{{ path_virtualenv }}/bin"
     cmake_config:
       > 
       -D CMAKE_BUILD_TYPE=RELEASE
