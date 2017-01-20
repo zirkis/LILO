@@ -5,6 +5,7 @@
   vars:
     user: vagrant
     path_app: /home/vagrant/app
+    path_package: "{{ path_app}}/deep_learning"
     path_virtualenv: /home/vagrant/.virtualenv/workspace
     path_env_bin_python: "{{ path_virtualenv }}/bin"
     cmake_config:

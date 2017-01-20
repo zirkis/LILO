@@ -2,6 +2,9 @@
 /app/data/
 /app/data_on_prepare
 
+#### APP EXAMPLE DATE #####
+/app/deep_learning/examples/data_example
+
 ##### Vagrant STUFF #####
 /vagrant/.vagrant
 
