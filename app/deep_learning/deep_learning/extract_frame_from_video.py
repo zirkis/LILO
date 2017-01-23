@@ -6,8 +6,14 @@ import cv2
 
 def extract_frame_from_video(path_to_video, frequence, path_to_save):
 
+  if not os.path.isfile(path_to_video):
+    message = 'Video not found: {}'.format(path_to_video)
+    print(message)
+    return
+
   if not os.path.exists(path_to_save):
-    os.mkdir(path_to_save)
+    print(path_to_save)
+    os.makedirs(path_to_save)
 
   basename = path.basename(path_to_video)
   name = path.splitext(basename)[0]
@@ -23,4 +29,4 @@ def extract_frame_from_video(path_to_video, frequence, path_to_save):
     count += 1
     if success and (count % frequence == 0):
       print(path_to_save_image)
-      cv2.imwrite(path_to_save_image, image)     # save frame as JPEG file
+      cv2.imwrite(path_to_save_image, image)
