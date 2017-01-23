@@ -37,6 +37,13 @@
     insertafter=EOF
     create=True
 
+- name: "Check if opencv is already installed"
+  command: "python -c 'import cv2'"
+  ignore_errors: true
+  changed_when: false # read-only task
+  check_mode: no
+  register: opencv_is_installed
+
 - name: "Opencv (1/3): Download"
   unarchive:
     src=https://github.com/opencv/opencv/archive/3.1.0.zip
@@ -44,9 +51,11 @@
     owner={{ user }}
     group={{ user }}
     copy=no
+  when: opencv_is_installed
 
 - name: "Opencv (2/3): Create build dir"
   file: state=directory path=/home/{{ user }}/opencv-3.1.0/build
+  when: opencv_is_installed
 
 - name: "Opencv(3/3): Install"
   command: "{{ item }} chdir=/home/{{ user }}/opencv-3.1.0/build"
@@ -55,6 +64,7 @@
     - cmake {{ cmake_config }}
     - make -j4
     - make install
+  when: opencv_is_installed
 
 - name: Install deep_learning package
   shell: "{{ path_env_bin_python }}/python setup.py install"

@@ -17,5 +17,6 @@
       -D PYTHON2_PACKAGES_PATH={{ path_virtualenv }}/lib/python2.7/site-packages
       -D INSTALL_PYTHON_EXAMPLES=ON ..
   roles:
+    - role: pip
     - role: utility
     - role: app

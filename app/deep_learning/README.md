@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-*Opencv
+* Opencv
 
 This package include two part:
 

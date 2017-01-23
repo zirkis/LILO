@@ -35,6 +35,7 @@ setup(
     'six',
     'lxml',
     'pillow==2.9.0',
+    'requests',
     'numpy',
     'tensorflow'
   ],

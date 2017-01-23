@@ -9,9 +9,6 @@
 - name: Install Unzip
   apt: pkg=unzip
 
-- name: Install Pip
-  apt: pkg=python-pip
-
 - name: Install git
   apt: pkg=git
 

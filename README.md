@@ -53,7 +53,10 @@ mkdir data_on_preparation
 
 Now we have to collect as much data as possible, they are multiple way to do it.
 
-![alt text](https://github.com/zirkis/LILO/blob/master/docs/images/prepare_data.jpeg)
+<p align="center">
+  <img src="https://github.com/zirkis/LILO/blob/master/docs/images/prepare_data.jpeg"
+  alt="multiple way to collect data"/>
+</p>
 
 ### Manually
 

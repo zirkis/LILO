@@ -1,6 +1,5 @@
 #
 ####### Requirements.txt #######
 #
-
-###### Requirements to manipulate Images ######
 pip==9.0.1
+-r deep_learning/requirements.txt
