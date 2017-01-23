@@ -24,7 +24,7 @@ $ python retrain.py \
 --random_brightness 25
 ```
 
-## Available options
+## Retrain options
 
 ### Input and output file flags.
 
