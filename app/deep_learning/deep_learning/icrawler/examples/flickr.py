@@ -10,7 +10,6 @@ from .. import Feeder
 from .. import Parser
 from .. import Crawler
 
-
 class FlickrFeeder(Feeder):
 
     def feed(self, apikey, max_num=4000, page=1, user_id=None, tags=None,
@@ -51,7 +50,7 @@ class FlickrFeeder(Feeder):
             params['extras'] = extras
         params['per_page'] = per_page
         url = base_url + urlencode(params)
-        page_max = math.ceil(max_num / per_page)
+        page_max = int(math.ceil(max_num / per_page))
         for i in range(page, page + page_max):
             complete_url = '{}&page={}'.format(url, i)
             self.put_url_into_queue(complete_url)
@@ -77,12 +76,11 @@ class FlickrParser(Parser):
 
 class FlickrImageCrawler(Crawler):
 
-    def __init__(self, apikey, path_to_save='', search='', log_level=logging.INFO):
+    def __init__(self, apikey, path_to_save='', log_level=logging.INFO):
         self.apikey = apikey
         super(FlickrImageCrawler, self).__init__(
-            path_to_save=path_to_save, search=search,
-            feeder_cls=FlickrFeeder, parser_cls=FlickrParser,
-            log_level=log_level)
+            path_to_save=path_to_save, feeder_cls=FlickrFeeder,
+            parser_cls=FlickrParser, log_level=log_level)
 
     def crawl(self, max_num=1000, feeder_thr_num=1,
               parser_thr_num=1, downloader_thr_num=1, **kwargs):
