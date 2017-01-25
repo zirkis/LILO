@@ -1,7 +1,6 @@
 #
 ####### Requirements.txt #######
 #
-
 bs4
 six
 lxml
