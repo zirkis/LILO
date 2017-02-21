@@ -68,8 +68,7 @@ class Crawler(object):
         self.downloader = downloader_cls(img_dir=self.path_to_save,
                                          task_queue=self.task_queue,
                                          signal=self.signal,
-                                         session=self.session,
-                                         basename=search)
+                                         session=self.session)
 
     def init_signal(self):
         """Init signal.

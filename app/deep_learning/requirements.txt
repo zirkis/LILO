@@ -5,8 +5,20 @@ bs4
 six
 lxml
 requests
-pillow==2.9.0
 numpy
+coloredlogs
 
 ## Tensorflow
 https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.12.1-cp27-none-linux_x86_64.whl
+
+## Keras
+scipy
+scikit-learn
+pillow==2.9.0
+keras
+
+## To manipulate the image easily
+imutils
+
+## To store the dataset in a file (not in RAM)
+h5py

@@ -5,7 +5,13 @@ from os import *
 import cv2
 
 def extract_frame_from_video(path_to_video, frequence, path_to_save):
+  """
+    Extract the frame from a given video
 
+    :param path_to_video: Path to the video to extract frame
+    :param frequence: Frequence of image taken
+    :param path_to_save: Path to save the extracted frame
+  """
   if not os.path.isfile(path_to_video):
     message = 'Video not found: {}'.format(path_to_video)
     print(message)

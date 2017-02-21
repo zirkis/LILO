@@ -3,6 +3,10 @@
 import tensorflow as tf
 
 def label_image(image_path):
+  """ 
+    Label the given image
+  """
+
   # Read in the image_data
   image_data = tf.gfile.FastGFile(image_path, 'rb').read()
 

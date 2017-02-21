@@ -7,6 +7,8 @@ if __name__ == '__main__':
 	path_to_save = 'data_on_prepare_example'
 	path_to_videos = "../../data_on_prepare/videos"
 
+	searchies = {"basil": "Basil leaf"}
+	"""
 	# POPULATE WITH SEARCHIES 
 	aromatics_searchies = {"basil": "Basil leaf",
 									 "parsley": "Parsley leaf",
@@ -27,15 +29,17 @@ if __name__ == '__main__':
 	searchies = dict(aromatics_searchies.items() +
 		flowers_searchies.items() +
 		fruits_and_vegetables_searchies.items()) 
-
-	number_of_results = 5
+	"""
+	number_of_results = 100
 
 	for label, search in searchies.iteritems():
-		crawl('google', search, number_of_results, '{}/{}'.format(path_to_save, label))
+		crawl('flickr', search, number_of_results, '{}/{}'.format(path_to_save, label))
 
+	"""
 	# POPULATE WITH VIDEOS
   videos = [{"name": "Basilic_1.m4v", "label": "label1"}]
 
   for video in videos:
     extract_frame_from_video('{}/{}'.format(path_to_videos, video['name']),
     	20, '{}/{}'.format(path_to_save, video['label']))
+"""

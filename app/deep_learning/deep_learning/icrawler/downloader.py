@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import logging
+import coloredlogs, logging
 import os
 import threading
 
 import requests
+import uuid
 from six.moves.urllib.parse import urlparse
 from PIL import Image
 from six import BytesIO
@@ -23,25 +24,19 @@ class Downloader(object):
                     Parser and Downloader.
         global_signal: A Signal object for cross-module communication.
         session: A requests.Session object.
-        basename: A basename for the downloaded images.
         logger: A logging.Logger object used for logging.
         threads: A list storing all the threading.Thread objects of the parser.
         thread_num: An integer indicating the number of threads.
         lock: A threading.Lock object.
     """
 
-    def __init__(self, img_dir, task_queue, signal, session, basename=''):
+    def __init__(self, img_dir, task_queue, signal, session):
         """Init Parser with some shared variables."""
         self.img_dir = img_dir
         self.task_queue = task_queue
         self.global_signal = signal
         self.session = session
         self.threads = []
-        if basename != '':
-            self.basename = basename.replace(" ", "_").lower() + '_'
-        else:
-            self.basename = ''
-
         self.clear_status()
         self.set_logger()
 
@@ -50,6 +45,7 @@ class Downloader(object):
         self.fetched_num = 0
 
     def set_logger(self):
+        coloredlogs.install()
         self.logger = logging.getLogger(__name__)
 
     def set_file_path(self, img_task):
@@ -76,7 +72,7 @@ class Downloader(object):
         if len(extension_with_params) > 1:
             extension = extension_with_params[-1]
         filename = os.path.join(self.img_dir,
-                                '{}{:0>6d}.{}'.format(self.basename, self.fetched_num, extension))
+                                '{}.{}'.format(uuid.uuid4(), extension))
         return filename
 
     def reach_max_num(self):
