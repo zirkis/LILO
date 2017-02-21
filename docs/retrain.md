@@ -18,7 +18,7 @@ $ python retrain.py \
 --model_dir ../../train_data/inception \
 --output_graph ../../train_data/retrained_graph.pb \
 --output_labels ../../train_data/retrained_labels.txt \
---image_dir ../../data \
+--image_dir ../../data_on_preparation \
 --flip_left_right True \
 --random_crop 25 \
 --random_brightness 25
