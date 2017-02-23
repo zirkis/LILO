@@ -70,3 +70,4 @@
   shell: "{{ path_env_bin_python }}/python setup.py install"
   args:
     chdir: "{{ path_package }}"
+  become_user: "{{ user }}"

@@ -56,16 +56,10 @@ def generator_data(data_path, data_labels):
 				print("Image: {} is corrupted please move it from the dataset".format(image_path))
 				continue
 
-
-			print("Generator :{}, {}".format(i, image_path))
 			data = image_to_feature_vector(image)
-			data = data.reshape((1,12288))
-			label = np.array(labels[i]).reshape((1,3))
-			print(label)
-			print(data.shape)
-
+			data = data.reshape((1, data.shape[0]))
+			label = np.array(labels[i]).reshape((1, labels[i].shape[0]))
 			yield data, label
-	print("[INFO] End Get images...")
 
 
 (data, labels) = get_data(args["dataset"])
@@ -76,7 +70,7 @@ le = LabelEncoder()
 labels = le.fit_transform(labels)
 labels = np_utils.to_categorical(labels, number_of_classes)
 
-
+# Split the data into two in order to find the accuracy after the training
 (train_data, test_data, train_labels, test_labels) = train_test_split(
 	data, labels, test_size=0.25, random_state=42)
 
@@ -103,8 +97,7 @@ generated_data = generator_data(train_data, train_labels)
 if args["load_model"] < 0:
 	print("[INFO] training...")
 	model.fit_generator(generated_data,
-		samples_per_epoch = 12288,
-		class_weight = number_of_classes,
+		samples_per_epoch = len(train_data),
 		nb_epoch = 20)
 
 	# show the accuracy on the testing set
