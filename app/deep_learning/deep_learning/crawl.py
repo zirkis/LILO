@@ -22,14 +22,3 @@ def crawl(type_crawler, search, number_of_results, path_to_save, color_code=5):
 			downloader_thr_num=4,
 			min_size=(200,200),
 			max_size=None)
-
-crawl('flickr','basil,leaf',1000,'../../data_on_preparation/basil/')
-crawl('flickr','mint,leaf',1000,'../../data_on_preparation/mint/')
-crawl('flickr','thymes,plant',1000,'../../data_on_preparation/thyme/')
-crawl('flickr','sage,leaf',1000,'../../data_on_preparation/sage/')
-crawl('flickr','coriander,leaf',1000,'../../data_on_preparation/coriander/')
-crawl('flickr','sun, flower',1000,'../../data_on_preparation/sunflower/', color_code=4)
-crawl('flickr','parsley,leaf',1000,'../../data_on_preparation/parsley/')
-crawl('flickr','purslane, flower',1000,'../../data_on_preparation/purslaneflower/', color_code=4)
-crawl('flickr','petunia',1000,'../../data_on_preparation/petunia/', color_code='a')
-

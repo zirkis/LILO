@@ -24,7 +24,6 @@ class Downloader(object):
                     Parser and Downloader.
         global_signal: A Signal object for cross-module communication.
         session: A requests.Session object.
-        basename: A basename for the downloaded images.
         logger: A logging.Logger object used for logging.
         threads: A list storing all the threading.Thread objects of the parser.
         thread_num: An integer indicating the number of threads.

@@ -4,8 +4,8 @@
   apt: pkg={{ item }}
   with_items:
     - build-essential
+    - gfortran
     - python-dev
-    - python-virtualenv
     - libxml2
     - libxslt1.1
     - libxslt1-dev
@@ -20,14 +20,19 @@
     - libavcodec-dev
     - libavformat-dev
     - libswscale-dev
+    - libatlas-base-dev
 
-- name: Create virtualenv
+- name: Install virtualenv
+  pip:
+    name=virtualenv
+
+- name: Create WORKSPACE virtualenv
   pip:
     requirements={{ path_app }}/requirements.txt
     virtualenv={{ path_virtualenv }}
   become_user: "{{ user }}"
 
-- name: Add Tensorflow env alias for user
+- name: Add WORKSPACE env alias for user
   lineinfile:
     dest=/home/{{ user }}/.bashrc
     line="alias WORKSPACE='source {{ path_virtualenv }}/bin/activate'"
