@@ -13,8 +13,8 @@ from .. import Crawler
 class FlickrFeeder(Feeder):
 
     def feed(self, apikey, max_num=4000, page=1, user_id=None, tags=None,
-             tag_mode='any', text=None, min_upload_date=None,
-             max_upload_date=None, group_id=None, extras=None, per_page=100):
+             tag_mode='all', text=None, min_upload_date=None,
+             max_upload_date=None, group_id=None, extras=None, per_page=50, color=5):
         if apikey is None:
             return
         if max_num > 4000:
@@ -26,8 +26,8 @@ class FlickrFeeder(Feeder):
         if user_id is not None:
             params['user_id'] = user_id
         if tags is not None:
-            params['tags'] = tags
-            params['tag_mode'] = tag_mode
+           params['tags'] = tags
+           params['tag_mode'] = tag_mode
         if text is not None:
             params['text'] = text
         if min_upload_date is not None:
@@ -52,7 +52,8 @@ class FlickrFeeder(Feeder):
         url = base_url + urlencode(params)
         page_max = int(math.ceil(max_num / per_page))
         for i in range(page, page + page_max):
-            complete_url = '{}&page={}'.format(url, i)
+            complete_url = '{}&sort=relevance&color_codes={}&page={}'.format(url, color, i)
+            complete_url = complete_url.replace('%2C','%20')
             self.put_url_into_queue(complete_url)
             self.logger.debug('put url to url_queue: {}'.format(complete_url))
 
