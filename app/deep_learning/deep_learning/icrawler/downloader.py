@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
-import coloredlogs, logging
+import logging
 import os
 import threading
+import uuid
 
 import requests
-import uuid
 from six.moves.urllib.parse import urlparse
 from PIL import Image
 from six import BytesIO
@@ -24,6 +24,7 @@ class Downloader(object):
                     Parser and Downloader.
         global_signal: A Signal object for cross-module communication.
         session: A requests.Session object.
+        basename: A basename for the downloaded images.
         logger: A logging.Logger object used for logging.
         threads: A list storing all the threading.Thread objects of the parser.
         thread_num: An integer indicating the number of threads.
@@ -37,6 +38,7 @@ class Downloader(object):
         self.global_signal = signal
         self.session = session
         self.threads = []
+
         self.clear_status()
         self.set_logger()
 
@@ -45,7 +47,6 @@ class Downloader(object):
         self.fetched_num = 0
 
     def set_logger(self):
-        coloredlogs.install()
         self.logger = logging.getLogger(__name__)
 
     def set_file_path(self, img_task):
