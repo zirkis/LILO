@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import logging
+import coloredlogs, logging
 import os
 import threading
 import uuid
@@ -46,6 +46,7 @@ class Downloader(object):
         self.fetched_num = 0
 
     def set_logger(self):
+        coloredlogs.install()
         self.logger = logging.getLogger(__name__)
 
     def set_file_path(self, img_task):
