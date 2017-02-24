@@ -200,6 +200,4 @@ If some images are not convertable to jpg, they will not be taken in the dataset
 
 
 //TODO
-sudo apt-get install tesseract-ocr
-pytesseract
 yapf
