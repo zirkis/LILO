@@ -25,7 +25,8 @@ args = vars(ap.parse_args())
 
 (data, labels) = get_data(args["dataset"])
 
-labelToSave = np.array(list(set(labels)))
+# get all the different label in order to display them while prediction
+labelsToSave = np.array(list(set(labels)))
 
 number_of_classes = len(list(set(labels)))
 
@@ -34,7 +35,7 @@ le = LabelEncoder()
 labels = le.fit_transform(labels)
 labels = np_utils.to_categorical(labels, number_of_classes)
 
-# Split the data into two in order to find the accuracy after the training
+# split the data into two in order to find the accuracy after the training
 (train_data, test_data, train_labels, test_labels) = train_test_split(
 	data, labels, test_size=0.25, random_state=42)
 
@@ -67,7 +68,6 @@ print("[INFO] evaluating...")
 print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
 
 
-
 if not os.path.exists(args["save"]):
     os.makedirs(args["save"])
 
@@ -79,7 +79,7 @@ with open("{}/model.json".format(args["save"]), "w") as json_file:
 print("[INFO] dumping weights to file...")
 model.save_weights("{}/weights.h5".format(args["save"]), overwrite=True)
 
-print("[INFO] saving label to file...")
-np.save("{}/labels.npy".format(args["save"]), labelToSave)
+print("[INFO] saving labels to file...")
+np.save("{}/labels.npy".format(args["save"]), labelsToSave)
 
 print("[INFO] DONE")
