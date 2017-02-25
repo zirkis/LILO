@@ -34,10 +34,16 @@ setup(
     'bs4',
     'six',
     'lxml',
-    'pillow==2.9.0',
     'requests',
     'numpy',
-    'tensorflow'
+    'coloredlogs',
+    'tensorflow',
+    'scipy',
+    'scikit-learn',
+    'pillow==2.9.0',
+    'keras',
+    'imutils',
+    'h5py'
   ],
 
   setup_requires=['pytest-runner'],
