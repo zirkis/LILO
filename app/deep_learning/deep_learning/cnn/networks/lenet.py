@@ -18,7 +18,7 @@ class LeNet:
 	@staticmethod
 	def build(width, height, depth, classes, weightsPath=None):
 		model                 = Sequential()
-		convolution_filter    = 20
+		convolution_filter    = width
 		filter_size           = (5, 5)
 		fully_connected_layer = 500
 
@@ -29,7 +29,7 @@ class LeNet:
 		model.add(Activation("relu"))
 		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
-		convolution_filter = 50
+		convolution_filter = width * 3
 
 		# second set of CONV => RELU => POOL
 		model.add(Convolution2D(convolution_filter, filter_size[0],

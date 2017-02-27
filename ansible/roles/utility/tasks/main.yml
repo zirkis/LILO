@@ -1,7 +1,38 @@
---- 
+---
 - name: Apt update
   apt:
     update_cache: yes
+
+- name: Install zsh 
+  apt: pkg=zsh
+
+- name: "Config terminal (1/4): Install Oh-my-zsh"
+  shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+- name: "Config terminal (2/4): Download syntax hightlightining"
+  git:
+    repo=https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest="{{ path_softwares }}/zsh-syntax-highlighting"
+
+- name: "Config terminal (3/4): Add eval syntax hightlightining in zshrc"
+  lineinfile:
+    dest=/home/{{ user }}/.zshrc
+    line="source {{ path_softwares }}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+    owner={{ user }}
+    regexp='^source {{ path_softwares }}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh$'
+    state=present
+    insertafter=EOF
+    create=True
+
+- name: "Config terminal (4/4): Add C (clear) alias in zshrc"
+  lineinfile:
+    dest=/home/{{ user }}/.zshrc
+    line="alias C='clear'"
+    owner={{ user }}
+    regexp='^alias C=clear$'
+    state=present
+    insertafter=EOF
+    create=True
 
 - name: Install CMake
   apt: pkg=cmake

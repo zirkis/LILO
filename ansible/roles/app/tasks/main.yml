@@ -34,7 +34,7 @@
 
 - name: Add WORKSPACE env alias for user
   lineinfile:
-    dest=/home/{{ user }}/.bashrc
+    dest=/home/{{ user }}/.zshrc
     line="alias WORKSPACE='source {{ path_virtualenv }}/bin/activate'"
     owner={{ user }}
     regexp='^alias source {{ path_virtualenv }}/bin/activate$'

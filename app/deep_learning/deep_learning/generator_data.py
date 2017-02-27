@@ -14,7 +14,10 @@ def delete_image_if_exist(image_path):
 def image_to_feature_vector(image, size):
   # resize the image to a fixed size, then flatten the image into
   # a list of raw pixel intensities
-  return np.array(cv2.resize(image, size).flatten()) / 255.0
+  
+  # return np.array(cv2.resize(image, size).flatten()) / 255.0
+
+  return np.array(cv2.resize(image, size)) / 255.0
 
 def generator_data(data_paths, data_labels, size):
   while True:
@@ -27,6 +30,7 @@ def generator_data(data_paths, data_labels, size):
         continue
 
       data = image_to_feature_vector(image, size)
-      data = data.reshape((1, data.shape[0]))
+      data = np.expand_dims(data, axis=0)
+
       label = np.array(data_labels[i]).reshape((1, data_labels[i].shape[0]))
       yield data, label

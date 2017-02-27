@@ -8,7 +8,7 @@ from sklearn.cross_validation import train_test_split
 from keras.optimizers import SGD
 from keras.utils import np_utils
 
-from deep_learning import get_data, generator_data
+from deep_learning import get_data, generator_data, save_trained_model
 from deep_learning.cnn.networks import LeNet, Simple
 
 IMAGES_SIZE = (64, 64)
@@ -22,13 +22,12 @@ ap.add_argument("-s", "--save", required=True,
 	help="name of the new model")
 args = vars(ap.parse_args())
 
-
 (data, labels) = get_data(args["dataset"])
 
-# get all the different label in order to display them while prediction
-labelsToSave = np.array(list(set(labels)))
+# get all the different labels name in order to display them while prediction
+labels_name = np.array(list(set(labels)))
 
-number_of_classes = len(list(set(labels)))
+number_of_classes = len(labels_name)
 
 # encode the labels, converting them from strings to integers
 le = LabelEncoder()
@@ -44,17 +43,16 @@ print("[INFO] compiling model...")
 opt = SGD(lr=0.001)
 
 """
-model = LeNet.build(width=IMAGE_SIZE[0], height=IMAGE_SIZE[1], depth=3,
-	classes=number_of_classes,
-	weightsPath=args["weights"] if args["load_model"] > 0 else None)
+model = LeNet.build(width=IMAGES_SIZE[0], height=IMAGES_SIZE[1], depth=3,
+	classes=number_of_classes)
 """
 
 model = Simple.build(width=IMAGES_SIZE[0], height=IMAGES_SIZE[1],
 	classes=number_of_classes)
 
+
 model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
-
 
 print("[INFO] training...")
 model.fit_generator(generator_data(train_data, train_labels, IMAGES_SIZE),
@@ -68,18 +66,7 @@ print("[INFO] evaluating...")
 print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
 
 
-if not os.path.exists(args["save"]):
-    os.makedirs(args["save"])
-
-print("[INFO} saving model to file...")
-model_json = model.to_json()
-with open("{}/model.json".format(args["save"]), "w") as json_file:
-    json_file.write(model_json)
-
-print("[INFO] dumping weights to file...")
-model.save_weights("{}/weights.h5".format(args["save"]), overwrite=True)
-
-print("[INFO] saving labels to file...")
-np.save("{}/labels.npy".format(args["save"]), labelsToSave)
+print("[INFO} saving trained model...")
+save_trained_model(args["save"], model, labels_name)
 
 print("[INFO] DONE")

@@ -188,11 +188,98 @@ if __name__ == '__main__':
 <b>Note</b>: All your images will be converted to jpg, and a need name will be given (uuid).
 If some images are not convertable to jpg, they will not be taken in the dataset.
 
-## Retrain 
+## Training 
 
-[Retrain options](https://github.com/zirkis/LILO/blob/master/docs/retrain.md)
+This step is the more technical one, we will have to choice a way to train the model.
+Fortunately your package contains several ways to train a cnn (Convolutional Neural Networks).
+But before we can train our model with our dataset we have to do some works.
+
+### Include all we need for the futur
+
+```python
+# -*- coding: utf-8 -*-
+
+import os
+import argparse
+import numpy as np
+from sklearn.preprocessing import LabelEncoder
+from sklearn.cross_validation import train_test_split
+from keras.optimizers import SGD
+from keras.utils import np_utils
+
+from deep_learning import get_data, generator_data, save_trained_model
+from deep_learning.cnn.networks import Simple
+```
+
+### Retrieving data
+
+```python
+path_to_dataset="path/to/your/dataset"
+
+(data, labels) = get_data(path_to_dataset)
+```
+
+The function get_data return:
+
+- data: An array containning all the path to the data in the given dataset
+- labels: A cross array with the data array containning the label of the cross data 
+
+### Prepare data
+
+```python
+# get all the different labels name in order to display them while prediction
+labels_name = np.array(list(set(labels)))
+
+number_of_classes = len(labels_name)
+
+# encode the labels, converting them from strings to integers
+le = LabelEncoder()
+labels = le.fit_transform(labels)
+labels = np_utils.to_categorical(labels, number_of_classes)
+
+# split the data into two in order to find the accuracy after the training
+(train_data, test_data, train_labels, test_labels) = train_test_split(
+	data, labels, test_size=0.25, random_state=42)
+```
+
+### Compile model
+
+```python
+opt = SGD(lr=0.001)
+
+model = Simple.build(width=IMAGES_SIZE[0], height=IMAGES_SIZE[1],
+	classes=number_of_classes)
+
+
+model.compile(loss="binary_crossentropy", optimizer=opt,
+	metrics=["accuracy"])
+```
+
+### Training
+
+```python
+model.fit_generator(generator_data(train_data, train_labels, IMAGES_SIZE),
+	samples_per_epoch = len(train_data),
+	nb_epoch = 20)
+```
+
+### Evaluate
+
+```python
+(loss, accuracy) = model.evaluate_generator(generator_data(test_data, test_labels, IMAGES_SIZE),
+	val_samples=len(test_data))
+print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
+```
+
+### Save trained model
+
+```python
+path_to_save = path/where/you/want/to/save
+save_trained_model(path_to_save, model, labels_name)
+```
 
 ## Label an image
+
 
 ## More examples
 
