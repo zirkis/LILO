@@ -13,4 +13,6 @@ def load_saved_trained_model(path_to_model):
 
 	labels = np.load("{}/labels.npy".format(path_to_model))
 
-	return (model, labels)
+	configs = np.load("{}/configs.npy".format(path_to_model))
+
+	return (model, labels, configs)

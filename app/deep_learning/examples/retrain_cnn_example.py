@@ -11,7 +11,7 @@ from keras.utils import np_utils
 from deep_learning import get_data, generator_data, save_trained_model
 from deep_learning.cnn.networks import LeNet, Simple
 
-IMAGES_SIZE = (64, 64)
+configs = {'IMAGES_SIZE': (64, 64)} 
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -43,11 +43,11 @@ print("[INFO] compiling model...")
 opt = SGD(lr=0.001)
 
 """
-model = LeNet.build(width=IMAGES_SIZE[0], height=IMAGES_SIZE[1], depth=3,
+model = LeNet.build(width=configs['IMAGES_SIZE'][0], height=configs['IMAGES_SIZE'][1], depth=3,
 	classes=number_of_classes)
 """
 
-model = Simple.build(width=IMAGES_SIZE[0], height=IMAGES_SIZE[1],
+model = Simple.build(width=configs['IMAGES_SIZE'][0], height=configs['IMAGES_SIZE'][1],
 	classes=number_of_classes)
 
 
@@ -55,18 +55,18 @@ model.compile(loss="binary_crossentropy", optimizer=opt,
 	metrics=["accuracy"])
 
 print("[INFO] training...")
-model.fit_generator(generator_data(train_data, train_labels, IMAGES_SIZE),
+model.fit_generator(generator_data(train_data, train_labels, configs['IMAGES_SIZE']),
 	samples_per_epoch = len(train_data),
 	nb_epoch = 20)
 
 # show the accuracy on the testing set
 print("[INFO] evaluating...")
-(loss, accuracy) = model.evaluate_generator(generator_data(test_data, test_labels, IMAGES_SIZE),
+(loss, accuracy) = model.evaluate_generator(generator_data(test_data, test_labels, configs['IMAGES_SIZE']),
 	val_samples=len(test_data))
 print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
 
 
 print("[INFO} saving trained model...")
-save_trained_model(args["save"], model, labels_name)
+save_trained_model(args["save"], model, labels_name, configs)
 
 print("[INFO] DONE")

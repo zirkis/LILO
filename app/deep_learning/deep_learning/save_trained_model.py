@@ -3,7 +3,7 @@
 import os
 import numpy as np
 
-def save_trained_model(path_to_save, model, labels_name):
+def save_trained_model(path_to_save, model, labels_name, configs):
 	if not os.path.exists(path_to_save):
 	    os.makedirs(path_to_save)
 
@@ -14,3 +14,5 @@ def save_trained_model(path_to_save, model, labels_name):
 	model.save_weights("{}/weights.h5".format(path_to_save), overwrite=True)
 
 	np.save("{}/labels.npy".format(path_to_save), labels_name)
+	
+	np.save('{}/configs.npy', configs) 

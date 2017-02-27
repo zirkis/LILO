@@ -200,7 +200,6 @@ But before we can train our model with our dataset we have to do some works.
 # -*- coding: utf-8 -*-
 
 import os
-import argparse
 import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cross_validation import train_test_split
@@ -209,6 +208,12 @@ from keras.utils import np_utils
 
 from deep_learning import get_data, generator_data, save_trained_model
 from deep_learning.cnn.networks import Simple
+```
+
+### Set all the configs for the training
+
+```python
+configs = {'IMAGES_SIZE': (64, 64)} 
 ```
 
 ### Retrieving data
@@ -247,7 +252,7 @@ labels = np_utils.to_categorical(labels, number_of_classes)
 ```python
 opt = SGD(lr=0.001)
 
-model = Simple.build(width=IMAGES_SIZE[0], height=IMAGES_SIZE[1],
+model = Simple.build(width=configs['IMAGES_SIZE'][0], height=configs['IMAGES_SIZE'][1],
 	classes=number_of_classes)
 
 
@@ -258,7 +263,7 @@ model.compile(loss="binary_crossentropy", optimizer=opt,
 ### Training
 
 ```python
-model.fit_generator(generator_data(train_data, train_labels, IMAGES_SIZE),
+model.fit_generator(generator_data(train_data, train_labels, configs['IMAGES_SIZE']),
 	samples_per_epoch = len(train_data),
 	nb_epoch = 20)
 ```
@@ -266,7 +271,7 @@ model.fit_generator(generator_data(train_data, train_labels, IMAGES_SIZE),
 ### Evaluate
 
 ```python
-(loss, accuracy) = model.evaluate_generator(generator_data(test_data, test_labels, IMAGES_SIZE),
+(loss, accuracy) = model.evaluate_generator(generator_data(test_data, test_labels, configs['IMAGES_SIZE']),
 	val_samples=len(test_data))
 print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
 ```
@@ -275,11 +280,58 @@ print("[INFO] accuracy: {:.2f}%".format(accuracy * 100))
 
 ```python
 path_to_save = path/where/you/want/to/save
-save_trained_model(path_to_save, model, labels_name)
+save_trained_model(path_to_save, model, labels_name, configs)
 ```
 
-## Label an image
+## Predict a label
 
+At the moment we are now able to predict a label on one given image
+
+### Include all we need
+
+```python
+# -*- coding: utf-8 -*-
+
+import cv2
+import numpy as np
+from keras.models import model_from_json
+```
+
+### Load image
+
+```python
+path_to_image = path/to/the/image/to/predict
+image = cv2.imread(path_to_image)
+```
+
+### Load the trained model
+
+```python
+path_to_model = path/to/the/trained/model
+(model, labels, configs) = load_saved_trained_model(path_to_model)
+```
+
+### Prepare image for prediction
+
+```python
+image = np.array(cv2.resize(image, configs['IMAGES_SIZE'])) / 255.0
+image = np.expand_dims(image.transpose((2,0,1)), axis=0)
+```
+
+### Prediction
+
+```python
+classes = model.predict(image)
+```
+
+### See result 
+
+```python
+np.set_printoptions(formatter={'float_kind':'{:f}'.format})
+print("RESULT:")
+for i in range(0, len(classes[0])):
+	print("{}: {}".format(labels[i], classes[0][i] * 100))
+```
 
 ## More examples
 
