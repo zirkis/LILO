@@ -6,7 +6,7 @@ from .retrain import retrain
 from .get_data import get_data
 from .generator_data import generator_data
 from .save_trained_model import save_trained_model
-form .load_saved_trained_model import load_saved_trained_model
+from .load_saved_trained_model import load_saved_trained_model
 
 __all__ = [
 					'crawl',
