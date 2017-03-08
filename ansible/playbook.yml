@@ -4,10 +4,11 @@
   remote_user: root
   vars:
     user: vagrant
-    path_app: /home/vagrant/app
+    path_user: "/home/{{ user }}"
+    path_app: "{{ path_user }}/app"
     path_package: "{{ path_app }}/deep_learning"
-    path_virtualenv: /home/vagrant/.virtualenv/workspace
-    path_softwares: /home/vagrant/softwares
+    path_virtualenv: "{{ path_user }}/.virtualenv/workspace"
+    path_softwares: "{{ path_user }}/softwares"
     path_env_bin_python: "{{ path_virtualenv }}/bin"
     cmake_config:
       > 

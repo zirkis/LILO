@@ -62,7 +62,7 @@
   file: state=directory path=/home/{{ user }}/opencv-3.1.0/build
   when: opencv_is_installed
 
-- name: "Opencv(3/3): Install"
+- name: "Opencv (3/3): Install"
   command: "{{ item }} chdir=/home/{{ user }}/opencv-3.1.0/build"
   become: yes
   with_items:
