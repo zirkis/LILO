@@ -3,7 +3,8 @@
 import cv2
 import numpy as np
 import argparse
-from keras.models import model_from_json
+
+from deep_learning import load_saved_trained_model
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
@@ -25,8 +26,8 @@ else:
 	(model, labels, configs) = load_saved_trained_model(args['model'])
 
 	print("[INFO] Prepare image for prediction...")
-	image = np.array(cv2.resize(image, configs['IMAGES_SIZE'])) / 255.0
-	image = np.expand_dims(image.transpose((2,0,1)), axis=0)
+	image = np.array(cv2.resize(image,  configs['IMAGES_SIZE'])) / 255.0
+	image = np.expand_dims(image, axis=0)
 	np.set_printoptions(formatter={'float_kind':'{:f}'.format})
 
 	print("[INFO] Prediction...")

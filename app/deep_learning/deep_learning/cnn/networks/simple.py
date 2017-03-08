@@ -16,7 +16,7 @@ class Simple:
 	"""
 	@staticmethod
 	def build(width, height, classes, weightsPath=None):
-		model                 = Sequential()
+		model = Sequential()
 
 		model = Sequential()
 		model.add(Flatten(input_shape=(width, height, 3)))

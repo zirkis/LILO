@@ -20,5 +20,6 @@ keras
 ## To manipulate the image easily
 imutils
 
-## To store the dataset in a file (not in RAM)
+## To save the models and the configs
 h5py
+deepdish

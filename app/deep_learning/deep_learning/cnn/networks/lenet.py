@@ -19,7 +19,7 @@ class LeNet:
 	def build(width, height, depth, classes, weightsPath=None):
 		model                 = Sequential()
 		convolution_filter    = width
-		filter_size           = (5, 5)
+		filter_size           = (3, 3)
 		fully_connected_layer = 500
 
 		# first set of CONV => RELU => POOL

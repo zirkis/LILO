@@ -53,7 +53,7 @@ def convert_pictures_to_jpg(folder_path,
     delete_picture_if_error=True):
   pictures_format='jpg'
 
-  print('Begin conversion to {}'.format(pictures_format))
+  print('[Info] Begin conversion to {}'.format(pictures_format))
   for (path, dirs, files) in os.walk(folder_path):
     print("Move to : {}".format(path))
     for file in files:
@@ -70,18 +70,25 @@ def transfert_image_to_dataset(label, path_to_add, path_dataset):
     os.makedirs(path_label)
 
   for (path, dirs, files) in os.walk(path_to_add):
-    print("Move to : {}".format(path))
     for file in files:
       src = '{}/{}'.format(path, file)
       dst = '{}/{}.jpg'.format(path_label, uuid.uuid4())
       copyfile(src, dst)
 
 def insert_in_dataset(label, path_to_add, path_dataset):
+  print("[Info] BEGIN insert in dataset")
   if not os.path.exists(path_to_add):
     message = 'Path to add doesn\'t exist: {}'.format(path_to_add)
     print(message)
     return
 
+  print("[Info] Create dataset folder...")
   create_if_not_exist_dataset_folder(path_dataset)
+
+  print("[Info] Convert image to jpg...")
   convert_pictures_to_jpg(path_to_add)
+
+  print("[Info] Transfer image to dataset...")
   transfert_image_to_dataset(label, path_to_add, path_dataset)
+
+  print("[Info] DONE")

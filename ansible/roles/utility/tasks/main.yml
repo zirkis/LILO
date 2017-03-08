@@ -6,6 +6,18 @@
 - name: Install zsh 
   apt: pkg=zsh
 
+- name: Install CMake
+  apt: pkg=cmake
+
+- name: Install Unzip
+  apt: pkg=unzip
+
+- name: Install git
+  apt: pkg=git
+
+- name: Install Emacs
+  apt: pkg=emacs
+
 - name: "Config terminal (1/4): Install Oh-my-zsh"
   shell: sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
@@ -33,15 +45,3 @@
     state=present
     insertafter=EOF
     create=True
-
-- name: Install CMake
-  apt: pkg=cmake
-
-- name: Install Unzip
-  apt: pkg=unzip
-
-- name: Install git
-  apt: pkg=git
-
-- name: Install Emacs
-  apt: pkg=emacs
